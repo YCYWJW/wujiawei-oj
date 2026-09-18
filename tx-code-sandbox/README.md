@@ -155,7 +155,7 @@ sudo vim /etc/systemd/system/tx-code-sandbox.service
 # 定义服务的基本信息
 [Unit]
 # 服务的描述信息，会显示在 systemctl status 命令的输出中
-Description=txing code sandbox
+Description=wujiawei code sandbox
 # 指定服务的启动顺序，表示在网络服务启动之后才启动此服务
 After=network.target
 

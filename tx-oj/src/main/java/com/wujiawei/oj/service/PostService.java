@@ -62,4 +62,12 @@ public interface PostService extends IService<Post> {
     Page<PostEsDTO> getPostVOPage(Page<Post> postPage, HttpServletRequest request);
 
     List<PostEsDTO> getPostEsDTOByPosts(List<Post> postList);
+
+    /**
+     * 新增帖子并生成 AI 摘要
+     *
+     * @param post 帖子实体
+     * @return 是否新增成功
+     */
+    boolean addPostWithAiSummary(Post post);
 }

@@ -97,7 +97,7 @@ public class PostController {
         post.setCommentNum(0);
         post.setIsDelete(0);
         // 保存到mysql
-        boolean result = postService.save(post);
+        boolean result = postService.addPostWithAiSummary(post);
         ThrowUtils.throwIf(!result, TxCodeEnume.COMMON_OPS_FAILURE_EXCEPTION);
         List<Post> list = new ArrayList<>();
         list.add(post);

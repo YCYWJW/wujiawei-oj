@@ -33,6 +33,11 @@ public class PostVO implements Serializable {
     private String title;
 
     /**
+     * AI摘要
+     */
+    private String summary;
+
+    /**
      * 内容
      */
     private String content;

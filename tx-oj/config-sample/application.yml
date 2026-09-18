@@ -1,7 +1,7 @@
 # 公共配置文件
 spring:
   application:
-    name: txing-oj
+    name: wujiawei-oj
   # 默认 dev 环境
   profiles:
     active: dev
@@ -22,7 +22,7 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/txing_oj_ad?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/wujiawei_oj_ad?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
     #    ?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
@@ -112,3 +112,13 @@ cos:
     secretKey: xxx
     region: xxx
     bucket: xxx
+
+# AI 智能摘要配置
+ai-summary:
+  # 是否启用真实 AI 摘要（false 则用 Mock 占位摘要）
+  enabled: false
+  # 请填入你自己的 DeepSeek API Key（或留空从环境变量 DEEPSEEK_API_KEY 读取）
+  deepseek-api-key: "请填入你自己的DeepSeek API Key"
+  api-url: "https://api.deepseek.com/chat/completions"
+  model: "deepseek-chat"
+  max-tokens: 200

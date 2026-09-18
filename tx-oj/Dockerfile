@@ -1,4 +1,4 @@
-FROM maven:3.8.1-jdk-8-slim as builder
+FROM maven:3.9-eclipse-temurin-17 as builder
 
 # Copy local code to the container image.
 WORKDIR /app
@@ -9,4 +9,4 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Run the web service on container startup.
-CMD ["java","-jar","/app/target/txing-oj-0.0.1-SNAPSHOT.jar","--spring.profiles.active=prod"]
+CMD ["java","-jar","/app/target/tx-oj-1.0-SNAPSHOT.jar","--spring.profiles.active=prod"]

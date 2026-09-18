@@ -36,6 +36,10 @@ public class Post implements Serializable {
      */
     private String intro;
     /**
+     * AI摘要
+     */
+    private String summary;
+    /**
      * 内容
      */
     private String content;

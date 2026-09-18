@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- 导出 txing_oj_ad 的数据库结构
-CREATE DATABASE IF NOT EXISTS `txing_oj_ad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `txing_oj_ad`;
+-- 导出 wujiawei_oj_ad 的数据库结构
+CREATE DATABASE IF NOT EXISTS `wujiawei_oj_ad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `wujiawei_oj_ad`;
 
--- 导出  表 txing_oj_ad.gen_table 结构
+-- 导出  表 wujiawei_oj_ad.gen_table 结构
 CREATE TABLE IF NOT EXISTS `gen_table` (
                                            `table_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
                                            `table_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '表名称',
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `gen_table` (
     PRIMARY KEY (`table_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='代码生成业务表';
 
--- 正在导出表  txing_oj_ad.gen_table 的数据：~30 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.gen_table 的数据：~30 rows (大约)
 INSERT INTO `gen_table` (`table_id`, `table_name`, `table_comment`, `sub_table_name`, `sub_table_fk_name`, `class_name`, `tpl_category`, `tpl_web_type`, `package_name`, `module_name`, `business_name`, `function_name`, `function_author`, `gen_type`, `gen_path`, `options`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                                                                                                                                                                                                       (2, 'tx_oj_contact', '', NULL, NULL, 'TxOjContact', 'crud', '', 'com.ruoyi.project.oj', 'oj', 'contact', NULL, 'ruoyi', '0', '/', NULL, 'admin', '2024-04-02 15:20:44', '', NULL, NULL),
                                                                                                                                                                                                                                                                                                                                                       (4, 'tx_oj_course_favour', '', NULL, NULL, 'TxOjCourseFavour', 'crud', '', 'com.ruoyi.project.oj', 'oj', 'favour', NULL, 'ruoyi', '0', '/', NULL, 'admin', '2024-04-02 15:20:44', '', NULL, NULL),
@@ -78,7 +78,7 @@ INSERT INTO `gen_table` (`table_id`, `table_name`, `table_comment`, `sub_table_n
                                                                                                                                                                                                                                                                                                                                                       (37, 'tx_oj_topic', '帖子', NULL, NULL, 'Topic', 'crud', 'element-plus', 'com.ruoyi.project.oj', 'oj', 'forum', '帖子', 'wujiawei', '0', '/', '{"parentMenuId":2007}', 'admin', '2024-04-06 21:02:14', '', '2024-04-06 21:05:43', NULL),
                                                                                                                                                                                                                                                                                                                                                       (39, 'tx_oj_room', '聊天房间', 'tx_oj_room_friend', 'room_id', 'RoomFriend', 'sub', 'element-plus', 'com.ruoyi.project.oj', 'oj', 'roomFriend', '聊天房间', 'wujiawei', '0', '/', '{"parentMenuId":2008}', 'admin', '2024-04-07 13:14:26', '', '2024-04-07 21:15:05', NULL);
 
--- 导出  表 txing_oj_ad.gen_table_column 结构
+-- 导出  表 wujiawei_oj_ad.gen_table_column 结构
 CREATE TABLE IF NOT EXISTS `gen_table_column` (
                                                   `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
                                                   `table_id` bigint DEFAULT NULL COMMENT '归属表编号',
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `gen_table_column` (
     PRIMARY KEY (`column_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=397 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='代码生成业务表字段';
 
--- 正在导出表  txing_oj_ad.gen_table_column 的数据：~292 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.gen_table_column 的数据：~292 rows (大约)
 INSERT INTO `gen_table_column` (`column_id`, `table_id`, `column_name`, `column_comment`, `column_type`, `java_type`, `java_field`, `is_pk`, `is_increment`, `is_required`, `is_insert`, `is_edit`, `is_list`, `is_query`, `query_type`, `html_type`, `dict_type`, `sort`, `create_by`, `create_time`, `update_by`, `update_time`) VALUES
                                                                                                                                                                                                                                                                                                                                        (11, 2, 'id', NULL, 'bigint', 'Long', 'id', '1', '1', '0', '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2024-04-02 15:20:44', '', NULL),
                                                                                                                                                                                                                                                                                                                                        (12, 2, 'user_id', NULL, 'bigint', 'Long', 'userId', '0', '0', '0', '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2024-04-02 15:20:44', '', NULL),
@@ -400,7 +400,7 @@ INSERT INTO `gen_table_column` (`column_id`, `table_id`, `column_name`, `column_
                                                                                                                                                                                                                                                                                                                                        (395, 39, 'status', '状态', 'int', 'Long', 'status', '0', '0', '0', '1', '1', '1', '1', 'EQ', 'radio', '', 10, 'admin', '2024-04-07 13:14:26', '', '2024-04-07 21:15:05'),
                                                                                                                                                                                                                                                                                                                                        (396, 39, 'remark', '备注', 'varchar(255)', 'String', 'remark', '0', '0', '0', '1', '1', '1', NULL, 'EQ', 'input', '', 11, 'admin', '2024-04-07 13:14:26', '', '2024-04-07 21:15:05');
 
--- 导出  表 txing_oj_ad.sys_config 结构
+-- 导出  表 wujiawei_oj_ad.sys_config 结构
 CREATE TABLE IF NOT EXISTS `sys_config` (
                                             `config_id` int NOT NULL AUTO_INCREMENT COMMENT '参数主键',
                                             `config_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '参数名称',
@@ -415,7 +415,7 @@ CREATE TABLE IF NOT EXISTS `sys_config` (
     PRIMARY KEY (`config_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='参数配置表';
 
--- 正在导出表  txing_oj_ad.sys_config 的数据：~6 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_config 的数据：~6 rows (大约)
 INSERT INTO `sys_config` (`config_id`, `config_name`, `config_key`, `config_value`, `config_type`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                          (1, '主框架页-默认皮肤样式名称', 'sys.index.skinName', 'skin-blue', 'Y', 'admin', '2024-03-18 12:52:23', '', NULL, '蓝色 skin-blue、绿色 skin-green、紫色 skin-purple、红色 skin-red、黄色 skin-yellow'),
                                                                                                                                                                          (2, '用户管理-账号初始密码', 'sys.user.initPassword', '123456', 'Y', 'admin', '2024-03-18 12:52:23', '', NULL, '初始化密码 123456'),
@@ -424,7 +424,7 @@ INSERT INTO `sys_config` (`config_id`, `config_name`, `config_key`, `config_valu
                                                                                                                                                                          (5, '账号自助-是否开启用户注册功能', 'sys.account.registerUser', 'false', 'Y', 'admin', '2024-03-18 12:52:23', '', NULL, '是否开启注册用户功能（true开启，false关闭）'),
                                                                                                                                                                          (6, '用户登录-黑名单列表', 'sys.login.blackIPList', '', 'Y', 'admin', '2024-03-18 12:52:23', '', NULL, '设置登录IP黑名单限制，多个匹配项以;分隔，支持匹配（*通配、网段）');
 
--- 导出  表 txing_oj_ad.sys_dept 结构
+-- 导出  表 wujiawei_oj_ad.sys_dept 结构
 CREATE TABLE IF NOT EXISTS `sys_dept` (
                                           `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门id',
                                           `parent_id` bigint DEFAULT '0' COMMENT '父部门id',
@@ -443,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `sys_dept` (
     PRIMARY KEY (`dept_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='部门表';
 
--- 正在导出表  txing_oj_ad.sys_dept 的数据：~18 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_dept 的数据：~18 rows (大约)
 INSERT INTO `sys_dept` (`dept_id`, `parent_id`, `ancestors`, `dept_name`, `order_num`, `leader`, `phone`, `email`, `status`, `del_flag`, `create_by`, `create_time`, `update_by`, `update_time`) VALUES
                                                                                                                                                                                                      (100, 0, '0', 'wujiawei编程', 0, 'wujiawei', '13434618245', '134@163.com', '0', '0', 'admin', '2024-03-18 12:52:16', 'admin', '2024-04-13 20:40:35'),
                                                                                                                                                                                                      (101, 100, '0,100', '深圳总公司', 1, '若依', '15888888888', 'ry@qq.com', '0', '2', 'admin', '2024-03-18 12:52:16', '', NULL),
@@ -464,7 +464,7 @@ INSERT INTO `sys_dept` (`dept_id`, `parent_id`, `ancestors`, `dept_name`, `order
                                                                                                                                                                                                      (206, 100, '0,100', '题目管理', 0, '张飞', NULL, NULL, '0', '0', 'admin', '2024-04-13 21:01:59', '', NULL),
                                                                                                                                                                                                      (207, 100, '0,100', '用户管理', 0, '项羽', NULL, NULL, '0', '0', 'admin', '2024-04-13 21:02:18', '', NULL);
 
--- 导出  表 txing_oj_ad.sys_dict_data 结构
+-- 导出  表 wujiawei_oj_ad.sys_dict_data 结构
 CREATE TABLE IF NOT EXISTS `sys_dict_data` (
                                                `dict_code` bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
                                                `dict_sort` int DEFAULT '0' COMMENT '字典排序',
@@ -483,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `sys_dict_data` (
     PRIMARY KEY (`dict_code`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典数据表';
 
--- 正在导出表  txing_oj_ad.sys_dict_data 的数据：~29 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_dict_data 的数据：~29 rows (大约)
 INSERT INTO `sys_dict_data` (`dict_code`, `dict_sort`, `dict_label`, `dict_value`, `dict_type`, `css_class`, `list_class`, `is_default`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                                                                          (1, 1, '男', '0', 'sys_user_sex', '', '', 'Y', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '性别男'),
                                                                                                                                                                                                                          (2, 2, '女', '1', 'sys_user_sex', '', '', 'N', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '性别女'),
@@ -515,7 +515,7 @@ INSERT INTO `sys_dict_data` (`dict_code`, `dict_sort`, `dict_label`, `dict_value
                                                                                                                                                                                                                          (28, 1, '成功', '0', 'sys_common_status', '', 'primary', 'N', '0', 'admin', '2024-03-18 12:52:23', '', NULL, '正常状态'),
                                                                                                                                                                                                                          (29, 2, '失败', '1', 'sys_common_status', '', 'danger', 'N', '0', 'admin', '2024-03-18 12:52:23', '', NULL, '停用状态');
 
--- 导出  表 txing_oj_ad.sys_dict_type 结构
+-- 导出  表 wujiawei_oj_ad.sys_dict_type 结构
 CREATE TABLE IF NOT EXISTS `sys_dict_type` (
                                                `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
                                                `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典名称',
@@ -530,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `sys_dict_type` (
     UNIQUE KEY `dict_type` (`dict_type`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典类型表';
 
--- 正在导出表  txing_oj_ad.sys_dict_type 的数据：~10 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_dict_type 的数据：~10 rows (大约)
 INSERT INTO `sys_dict_type` (`dict_id`, `dict_name`, `dict_type`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                   (1, '用户性别', 'sys_user_sex', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '用户性别列表'),
                                                                                                                                                   (2, '菜单状态', 'sys_show_hide', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '菜单状态列表'),
@@ -543,7 +543,7 @@ INSERT INTO `sys_dict_type` (`dict_id`, `dict_name`, `dict_type`, `status`, `cre
                                                                                                                                                   (9, '操作类型', 'sys_oper_type', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '操作类型列表'),
                                                                                                                                                   (10, '系统状态', 'sys_common_status', '0', 'admin', '2024-03-18 12:52:22', '', NULL, '登录状态列表');
 
--- 导出  表 txing_oj_ad.sys_logininfor 结构
+-- 导出  表 wujiawei_oj_ad.sys_logininfor 结构
 CREATE TABLE IF NOT EXISTS `sys_logininfor` (
                                                 `info_id` bigint NOT NULL AUTO_INCREMENT COMMENT '访问ID',
                                                 `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '用户账号',
@@ -560,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `sys_logininfor` (
     ) ENGINE=InnoDB AUTO_INCREMENT=413 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='系统访问记录';
 
 
--- 导出  表 txing_oj_ad.sys_menu 结构
+-- 导出  表 wujiawei_oj_ad.sys_menu 结构
 CREATE TABLE IF NOT EXISTS `sys_menu` (
                                           `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
                                           `menu_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '菜单名称',
@@ -584,7 +584,7 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
     PRIMARY KEY (`menu_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=2026 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='菜单权限表';
 
--- 正在导出表  txing_oj_ad.sys_menu 的数据：~77 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_menu 的数据：~77 rows (大约)
 INSERT INTO `sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                                                                                                          (1, '系统管理', 0, 1, 'system', NULL, '', 1, 0, 'M', '0', '0', '', 'system1', 'admin', '2024-03-18 12:52:17', 'admin', '2024-04-15 13:53:57', '系统管理目录'),
                                                                                                                                                                                                                                                          (3, '系统工具', 0, 3, 'tool', NULL, '', 1, 0, 'M', '1', '0', '', 'tool', 'admin', '2024-03-18 12:52:17', 'admin', '2024-04-15 13:34:39', '系统工具目录'),
@@ -664,7 +664,7 @@ INSERT INTO `sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`
                                                                                                                                                                                                                                                          (2024, '周赛管理', 2005, 1, 'week/center', 'oj/match/weekMatch/index', NULL, 1, 0, 'C', '0', '0', 'oj:weekMatch:list', 'week', 'admin', '2024-04-07 22:51:34', 'admin', '2024-04-14 22:40:41', ''),
                                                                                                                                                                                                                                                          (2025, 'PK管理', 2005, 1, 'pk/center', 'oj/match/onlinepk/index', NULL, 1, 0, 'C', '0', '0', 'oj:onlinepk:list', 'pk', 'admin', '2024-04-08 10:58:39', 'admin', '2024-04-15 20:02:04', '');
 
--- 导出  表 txing_oj_ad.sys_oper_log 结构
+-- 导出  表 wujiawei_oj_ad.sys_oper_log 结构
 CREATE TABLE IF NOT EXISTS `sys_oper_log` (
                                               `oper_id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
                                               `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '模块标题',
@@ -690,7 +690,7 @@ CREATE TABLE IF NOT EXISTS `sys_oper_log` (
     ) ENGINE=InnoDB AUTO_INCREMENT=607 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='操作日志记录';
 
 
--- 导出  表 txing_oj_ad.sys_post 结构
+-- 导出  表 wujiawei_oj_ad.sys_post 结构
 CREATE TABLE IF NOT EXISTS `sys_post` (
                                           `post_id` bigint NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
                                           `post_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '岗位编码',
@@ -705,7 +705,7 @@ CREATE TABLE IF NOT EXISTS `sys_post` (
     PRIMARY KEY (`post_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='岗位信息表';
 
--- 正在导出表  txing_oj_ad.sys_post 的数据：~8 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_post 的数据：~8 rows (大约)
 INSERT INTO `sys_post` (`post_id`, `post_code`, `post_name`, `post_sort`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                           (1, 'ceo', '董事长', 1, '0', 'admin', '2024-03-18 12:52:17', '', NULL, ''),
                                                                                                                                                           (5, '10000', '文章审核员', 0, '0', 'admin', '2024-04-15 14:11:24', '', NULL, NULL),
@@ -716,7 +716,7 @@ INSERT INTO `sys_post` (`post_id`, `post_code`, `post_name`, `post_sort`, `statu
                                                                                                                                                           (10, '10005', '竞赛管理员', 0, '0', 'admin', '2024-04-15 21:26:11', '', NULL, NULL),
                                                                                                                                                           (11, '10006', '题目管理员', 0, '0', 'admin', '2024-04-15 21:26:31', '', NULL, NULL);
 
--- 导出  表 txing_oj_ad.sys_role 结构
+-- 导出  表 wujiawei_oj_ad.sys_role 结构
 CREATE TABLE IF NOT EXISTS `sys_role` (
                                           `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
                                           `role_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色名称',
@@ -735,7 +735,7 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
     PRIMARY KEY (`role_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色信息表';
 
--- 正在导出表  txing_oj_ad.sys_role 的数据：~9 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_role 的数据：~9 rows (大约)
 INSERT INTO `sys_role` (`role_id`, `role_name`, `role_key`, `role_sort`, `data_scope`, `menu_check_strictly`, `dept_check_strictly`, `status`, `del_flag`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                                                                                  (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2024-03-18 12:52:17', '', NULL, '超级管理员'),
                                                                                                                                                                                                                                  (2, '普通角色', 'common', 2, '2', 1, 1, '0', '2', 'admin', '2024-03-18 12:52:17', '', NULL, '普通角色'),
@@ -747,23 +747,23 @@ INSERT INTO `sys_role` (`role_id`, `role_name`, `role_key`, `role_sort`, `data_s
                                                                                                                                                                                                                                  (105, 'ArticleAdmin', 'ArticleAdmin', 0, '1', 1, 1, '0', '0', 'admin', '2024-04-15 20:30:18', '', NULL, NULL),
                                                                                                                                                                                                                                  (106, 'UserAdmin', 'UserAdmin', 0, '1', 1, 1, '0', '0', 'admin', '2024-04-15 20:33:44', '', NULL, NULL);
 
--- 导出  表 txing_oj_ad.sys_role_dept 结构
+-- 导出  表 wujiawei_oj_ad.sys_role_dept 结构
 CREATE TABLE IF NOT EXISTS `sys_role_dept` (
                                                `role_id` bigint NOT NULL COMMENT '角色ID',
                                                `dept_id` bigint NOT NULL COMMENT '部门ID',
                                                PRIMARY KEY (`role_id`,`dept_id`) USING BTREE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色和部门关联表';
 
--- 正在导出表  txing_oj_ad.sys_role_dept 的数据：~0 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_role_dept 的数据：~0 rows (大约)
 
--- 导出  表 txing_oj_ad.sys_role_menu 结构
+-- 导出  表 wujiawei_oj_ad.sys_role_menu 结构
 CREATE TABLE IF NOT EXISTS `sys_role_menu` (
                                                `role_id` bigint NOT NULL COMMENT '角色ID',
                                                `menu_id` bigint NOT NULL COMMENT '菜单ID',
                                                PRIMARY KEY (`role_id`,`menu_id`) USING BTREE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色和菜单关联表';
 
--- 正在导出表  txing_oj_ad.sys_role_menu 的数据：~15 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_role_menu 的数据：~15 rows (大约)
 INSERT INTO `sys_role_menu` (`role_id`, `menu_id`) VALUES
                                                        (100, 2005),
                                                        (100, 2024),
@@ -781,7 +781,7 @@ INSERT INTO `sys_role_menu` (`role_id`, `menu_id`) VALUES
                                                        (105, 2020),
                                                        (106, 2010);
 
--- 导出  表 txing_oj_ad.sys_user 结构
+-- 导出  表 wujiawei_oj_ad.sys_user 结构
 CREATE TABLE IF NOT EXISTS `sys_user` (
                                           `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
                                           `dept_id` bigint DEFAULT NULL COMMENT '部门ID',
@@ -805,7 +805,7 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
     PRIMARY KEY (`user_id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
 
--- 正在导出表  txing_oj_ad.sys_user 的数据：~9 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_user 的数据：~9 rows (大约)
 INSERT INTO `sys_user` (`user_id`, `dept_id`, `user_name`, `nick_name`, `user_type`, `email`, `phonenumber`, `sex`, `avatar`, `password`, `status`, `del_flag`, `login_ip`, `login_date`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES
                                                                                                                                                                                                                                                                 (1, 100, 'admin', 'ricardo_plus', '00', '123@163.com', '13415233333', '0', '/profile/avatar/2024/12/08/1701615282599_20241208223540A001.jpg', '$2a$10$ybUeuVCz/cMCcE/MReimgusa2xwtCnCPE.cbh2XIdlmo.swaU8JOC', '0', '0', '127.0.0.1', '2025-01-05 15:24:16', 'admin', '2024-03-18 12:52:16', '', '2025-01-05 15:24:16', '管理员'),
                                                                                                                                                                                                                                                                 (100, 201, 'ricardo', 'ricardo', '00', '134@163.com', '', '0', '', '$2a$10$/YmaKqLYSYiZhgm9/zk4YupvjtkXPfSKHxBv5aWBP7eK0zgNhxGaC', '0', '0', '127.0.0.1', '2024-12-08 22:32:13', 'admin', '2024-04-14 22:10:03', 'admin', '2024-12-08 22:32:13', NULL),
@@ -816,14 +816,14 @@ INSERT INTO `sys_user` (`user_id`, `dept_id`, `user_name`, `nick_name`, `user_ty
                                                                                                                                                                                                                                                                 (105, 200, 'ricardo5', 'ricardo5', '00', '', '', '0', '', '$2a$10$DwOLeNJigeBi7XZqe4TPDuL0gaMKOdcHG9HOzWrKIszuSBivCmX8S', '0', '0', '127.0.0.1', '2024-04-15 20:31:09', 'admin', '2024-04-15 20:30:50', 'admin', '2024-04-15 21:27:54', NULL),
                                                                                                                                                                                                                                                                 (106, 207, 'ricardo6', 'ricardo6', '00', '', '', '0', '', '$2a$10$5e7.yJSe6DgpANHeLnjmye9SftcudfnXGoSDz34XdPIuB14Nnz5.2', '0', '0', '127.0.0.1', '2024-04-15 20:35:04', 'admin', '2024-04-15 20:33:11', 'admin', '2024-04-15 21:28:00', NULL);
 
--- 导出  表 txing_oj_ad.sys_user_post 结构
+-- 导出  表 wujiawei_oj_ad.sys_user_post 结构
 CREATE TABLE IF NOT EXISTS `sys_user_post` (
                                                `user_id` bigint NOT NULL COMMENT '用户ID',
                                                `post_id` bigint NOT NULL COMMENT '岗位ID',
                                                PRIMARY KEY (`user_id`,`post_id`) USING BTREE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户与岗位关联表';
 
--- 正在导出表  txing_oj_ad.sys_user_post 的数据：~8 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_user_post 的数据：~8 rows (大约)
 INSERT INTO `sys_user_post` (`user_id`, `post_id`) VALUES
                                                        (1, 1),
                                                        (100, 10),
@@ -834,14 +834,14 @@ INSERT INTO `sys_user_post` (`user_id`, `post_id`) VALUES
                                                        (105, 5),
                                                        (106, 7);
 
--- 导出  表 txing_oj_ad.sys_user_role 结构
+-- 导出  表 wujiawei_oj_ad.sys_user_role 结构
 CREATE TABLE IF NOT EXISTS `sys_user_role` (
                                                `user_id` bigint NOT NULL COMMENT '用户ID',
                                                `role_id` bigint NOT NULL COMMENT '角色ID',
                                                PRIMARY KEY (`user_id`,`role_id`) USING BTREE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户和角色关联表';
 
--- 正在导出表  txing_oj_ad.sys_user_role 的数据：~8 rows (大约)
+-- 正在导出表  wujiawei_oj_ad.sys_user_role 的数据：~8 rows (大约)
 INSERT INTO `sys_user_role` (`user_id`, `role_id`) VALUES
                                                        (1, 1),
                                                        (100, 100),
@@ -852,11 +852,11 @@ INSERT INTO `sys_user_role` (`user_id`, `role_id`) VALUES
                                                        (105, 105),
                                                        (106, 106);
 
--- 导出 txing_oj_ad 的数据库结构
-CREATE DATABASE IF NOT EXISTS `txing_oj_ad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `txing_oj_ad`;
+-- 导出 wujiawei_oj_ad 的数据库结构
+CREATE DATABASE IF NOT EXISTS `wujiawei_oj_ad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `wujiawei_oj_ad`;
 
--- 导出  表 txing_oj_ad.tx_oj_contact 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_contact 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_contact` (
                                                `id` bigint NOT NULL AUTO_INCREMENT,
                                                `user_id` bigint DEFAULT NULL,
@@ -874,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_contact` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_course_course 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_course_course 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_course_course` (
                                                      `id` bigint NOT NULL AUTO_INCREMENT,
                                                      `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -894,7 +894,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_course_course` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_course_favour 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_course_favour 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_course_favour` (
                                                      `id` bigint NOT NULL AUTO_INCREMENT,
                                                      `course_id` bigint DEFAULT NULL,
@@ -906,7 +906,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_course_favour` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_course_video 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_course_video 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_course_video` (
                                                     `id` bigint NOT NULL AUTO_INCREMENT,
                                                     `course_id` bigint DEFAULT NULL,
@@ -926,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_course_video` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_group_member 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_group_member 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_group_member` (
                                                     `id` bigint NOT NULL AUTO_INCREMENT,
                                                     `group_id` bigint DEFAULT NULL,
@@ -940,7 +940,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_group_member` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_match_onlinepk 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_match_onlinepk 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_match_onlinepk` (
                                                       `id` bigint NOT NULL AUTO_INCREMENT,
                                                       `user_id1` bigint DEFAULT NULL,
@@ -964,7 +964,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_match_onlinepk` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_match_submit_relate 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_match_submit_relate 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_match_submit_relate` (
                                                            `id` bigint NOT NULL AUTO_INCREMENT,
                                                            `match_id` bigint DEFAULT NULL,
@@ -981,7 +981,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_match_submit_relate` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_match_user_relate 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_match_user_relate 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_match_user_relate` (
                                                          `id` bigint NOT NULL AUTO_INCREMENT,
                                                          `match_id` bigint DEFAULT NULL,
@@ -1004,7 +1004,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_match_user_relate` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_match_week 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_match_week 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_match_week` (
                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1021,7 +1021,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_match_week` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_match_week_question_relate 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_match_week_question_relate 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_match_week_question_relate` (
                                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                                   `match_id` bigint DEFAULT NULL,
@@ -1035,7 +1035,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_match_week_question_relate` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_message 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_message 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_message` (
                                                `id` bigint NOT NULL AUTO_INCREMENT,
                                                `room_id` bigint DEFAULT NULL,
@@ -1051,11 +1051,12 @@ CREATE TABLE IF NOT EXISTS `tx_oj_message` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_post 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_post 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_post` (
                                             `id` bigint NOT NULL AUTO_INCREMENT,
                                             `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
     `intro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+    `summary` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'AI摘要',
     `content` varchar(500000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
     `cover_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
     `tags` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1073,7 +1074,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_post` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_post_comment 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_post_comment 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_post_comment` (
                                                     `id` bigint NOT NULL AUTO_INCREMENT,
                                                     `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1088,7 +1089,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_post_comment` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_post_favour 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_post_favour 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_post_favour` (
                                                    `id` bigint NOT NULL AUTO_INCREMENT,
                                                    `post_id` bigint DEFAULT NULL,
@@ -1100,7 +1101,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_post_favour` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_post_thumb 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_post_thumb 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_post_thumb` (
                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                   `post_id` bigint DEFAULT NULL,
@@ -1112,7 +1113,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_post_thumb` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_question 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_question 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_question` (
                                                 `id` bigint NOT NULL AUTO_INCREMENT,
                                                 `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1134,7 +1135,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_question` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_question_comment 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_question_comment 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_question_comment` (
                                                         `id` bigint NOT NULL AUTO_INCREMENT,
                                                         `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1149,7 +1150,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_question_comment` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_question_favour 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_question_favour 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_question_favour` (
                                                        `id` bigint NOT NULL AUTO_INCREMENT,
                                                        `question_id` bigint DEFAULT NULL,
@@ -1161,7 +1162,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_question_favour` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_question_submit 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_question_submit 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_question_submit` (
                                                        `id` bigint NOT NULL AUTO_INCREMENT,
                                                        `language` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1179,7 +1180,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_question_submit` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_room 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_room 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_room` (
                                             `id` bigint NOT NULL AUTO_INCREMENT,
                                             `type` int DEFAULT NULL,
@@ -1197,7 +1198,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_room` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_room_friend 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_room_friend 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_room_friend` (
                                                    `id` bigint NOT NULL AUTO_INCREMENT,
                                                    `room_id` bigint DEFAULT NULL,
@@ -1212,7 +1213,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_room_friend` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_room_group 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_room_group 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_room_group` (
                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                   `room_id` bigint DEFAULT NULL,
@@ -1227,7 +1228,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_room_group` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_topic 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_topic 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_topic` (
                                              `id` bigint NOT NULL AUTO_INCREMENT,
                                              `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1248,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_topic` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_topic_comment 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_topic_comment 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_topic_comment` (
                                                      `id` bigint NOT NULL AUTO_INCREMENT,
                                                      `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1264,7 +1265,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_topic_comment` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_topic_favour 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_topic_favour 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_topic_favour` (
                                                     `id` bigint NOT NULL AUTO_INCREMENT,
                                                     `topic_id` bigint DEFAULT NULL,
@@ -1276,7 +1277,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_topic_favour` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_topic_thumb 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_topic_thumb 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_topic_thumb` (
                                                    `id` bigint NOT NULL AUTO_INCREMENT,
                                                    `topic_id` bigint DEFAULT NULL,
@@ -1288,7 +1289,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_topic_thumb` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_user 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_user 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_user` (
                                             `id` bigint NOT NULL AUTO_INCREMENT,
                                             `user_account` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -1320,7 +1321,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_user` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_user_apply 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_user_apply 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_user_apply` (
                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                   `user_id` bigint DEFAULT NULL,
@@ -1337,7 +1338,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_user_apply` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_user_emoji 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_user_emoji 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_user_emoji` (
                                                   `id` bigint NOT NULL AUTO_INCREMENT,
                                                   `user_id` bigint DEFAULT NULL,
@@ -1350,7 +1351,7 @@ CREATE TABLE IF NOT EXISTS `tx_oj_user_emoji` (
 
 -- 数据导出被取消选择。
 
--- 导出  表 txing_oj_ad.tx_oj_user_friend 结构
+-- 导出  表 wujiawei_oj_ad.tx_oj_user_friend 结构
 CREATE TABLE IF NOT EXISTS `tx_oj_user_friend` (
                                                    `id` bigint NOT NULL AUTO_INCREMENT,
                                                    `user_id` bigint DEFAULT NULL,

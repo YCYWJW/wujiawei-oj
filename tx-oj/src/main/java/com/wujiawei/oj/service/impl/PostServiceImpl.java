@@ -19,6 +19,7 @@ import com.wujiawei.oj.model.enume.CheckStatusEnum;
 import com.wujiawei.oj.model.enume.TxCodeEnume;
 import com.wujiawei.oj.model.vo.post.PostVO;
 import com.wujiawei.oj.model.vo.user.UserVO;
+import com.wujiawei.oj.service.AiSummaryService;
 import com.wujiawei.oj.service.PostService;
 import com.wujiawei.oj.service.UserService;
 import com.wujiawei.oj.utils.page.SQLFilter;
@@ -74,6 +75,9 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     @Resource
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
+    @Resource
+    private AiSummaryService aiSummaryService;
+
     @Override
     public void validPost(Post post, boolean add) {
         if (post == null) {
@@ -93,6 +97,23 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         if (StringUtils.isNotBlank(content) && content.length() > 500000) {
             throw new BusinessException(TxCodeEnume.COMMON_SUBMIT_DATA_EXCEPTION, "内容过长");
         }
+    }
+
+    @Override
+    public boolean addPostWithAiSummary(Post post) {
+        boolean result = this.save(post);
+        if (result && post.getId() != null) {
+            try {
+                String summary = aiSummaryService.generateSummary(post.getTitle(), post.getContent());
+                if (summary != null && !summary.trim().isEmpty()) {
+                    post.setSummary(summary);
+                    this.updateById(post);
+                }
+            } catch (Exception e) {
+                log.error("生成AI摘要失败, postId={}", post.getId(), e);
+            }
+        }
+        return result;
     }
 
     /**
