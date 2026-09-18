@@ -1,0 +1,117 @@
+package com.wujiawei.oj.controller;
+
+import com.wujiawei.oj.annotation.AuthCheck;
+import com.wujiawei.oj.aop.AuthInterceptor;
+import com.wujiawei.oj.model.dto.submit.QuestionSubmitDoRequest;
+import com.wujiawei.oj.model.entity.Question;
+import com.wujiawei.oj.model.entity.QuestionSubmit;
+import com.wujiawei.oj.model.vo.question.ChartDataVO;
+import com.wujiawei.oj.model.vo.question.QuestionSubmitDetailVO;
+import com.wujiawei.oj.model.vo.question.QuestionSubmitSimpleVO;
+import com.wujiawei.oj.service.QuestionService;
+import com.wujiawei.oj.service.QuestionSubmitService;
+import com.wujiawei.oj.utils.R;
+import com.wujiawei.oj.utils.page.PageUtils;
+import com.wujiawei.oj.utils.page.PageVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+
+/**
+ * @author wujiawei
+ * @email
+ * @date 2023-11-13 21:54:02
+ */
+@RestController
+@RequestMapping("/question/submit")
+public class QuestionSubmitController {
+    @Autowired
+    private QuestionSubmitService questionSubmitService;
+    @Autowired
+    QuestionService questionService;
+
+    /**
+     * 分页查询(概要)
+     */
+    @PostMapping("/list")
+    @AuthCheck(mustRole = "login")
+    public R list(@RequestBody PageVO queryVO) {
+        PageUtils page = questionSubmitService.queryPage(queryVO);
+        List<QuestionSubmitSimpleVO> questionSubmitSimpleVOList = questionSubmitService.getQuestionSubmitSimpleVOs(page.getList());
+        page.setList(questionSubmitSimpleVOList);
+        return R.ok().put("data", page);
+    }
+
+
+    /**
+     * 获取提交详情（提交记录详情展示页）
+     */
+    @GetMapping("/detail/vo/{id}")
+    public R info(@PathVariable("id") Long id) {
+        QuestionSubmit questionSubmit = questionSubmitService.getById(id);
+        Question question = questionService.getById(questionSubmit.getQuestionId());
+        QuestionSubmitDetailVO questionSubmitDetailVO = QuestionSubmitDetailVO.toQuestionSubmitDetailVO(questionSubmit, question);
+        return R.ok().put("data", questionSubmitDetailVO);
+    }
+
+    /**
+     * 提交作答
+     */
+    @PostMapping("/do")
+    @AuthCheck(mustRole = "login")
+    public R doQuestionSubmit(@RequestBody QuestionSubmitDoRequest questionSubmitDoRequest) {
+        Long aLong = questionSubmitService.doSubmit(questionSubmitDoRequest);
+        return R.ok(aLong);
+    }
+
+    /**
+     * 获取做题图表数据
+     */
+    @PostMapping("/chart/data/get")
+    @AuthCheck(mustRole = "login")
+    public R getChartData() {
+        Long userId = AuthInterceptor.userThreadLocal.get().getId();
+        ChartDataVO chartDataVO = questionSubmitService.getChartData(userId);
+        return R.ok(chartDataVO);
+    }
+
+
+
+
+    /**
+     * 修改
+     */
+    @PostMapping("/update")
+    public R update(@RequestBody QuestionSubmit questionSubmit) {
+        questionSubmitService.updateById(questionSubmit);
+
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/delete")
+    public R delete(@RequestBody Long[] ids) {
+        questionSubmitService.removeByIds(Arrays.asList(ids));
+
+        return R.ok();
+    }
+
+    /**
+     * 查询执行结果
+     */
+    @GetMapping("/result/get")
+    public R getExecResult(@RequestParam("sumbitId") Long submitId) {
+        QuestionSubmit questionSubmit = questionSubmitService.getById(submitId);
+//        if (JudgeStatusEnum.SUCCESS.getValue().equals(questionSubmit.getStatus())
+//                || JudgeStatusEnum.FAILURE.getValue().equals(questionSubmit.getStatus())) {
+//        }
+        return R.ok().put("data", questionSubmit.getJudgeInfo());
+    }
+
+
+}

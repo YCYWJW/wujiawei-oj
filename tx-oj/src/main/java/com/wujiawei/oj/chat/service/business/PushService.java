@@ -1,0 +1,18 @@
+package com.wujiawei.oj.chat.service.business;
+
+import com.wujiawei.oj.chat.domain.vo.response.WsBaseVO;
+
+import java.util.List;
+
+/**
+ * @author wujiawei
+ * @date 2023/12/30 21:14:56
+ * 注释：
+ */
+public interface PushService {
+    void sendPushMsg(WsBaseVO<?> wsBaseVO, Long excludeUserId, Long id);
+
+    void sendPushMsg(WsBaseVO<?> wsBaseVO, Long id);
+
+    void sendPushMsg(WsBaseVO<?> buildMsgSend, List<Long> targetUserIds, Long id);
+}

@@ -1,0 +1,18 @@
+package com.wujiawei.oj.chat.domain.vo.request;
+
+import com.wujiawei.oj.model.dto.cursor.CursorPageBaseRequest;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+/**
+ * @author wujiawei
+ * @date 2024/1/1 20:17:52
+ * 注释：
+ */
+//@ApiModel("群聊成员-游标翻页请求")
+@Data
+public class GroupMemberRequest extends CursorPageBaseRequest {
+
+    @ApiModelProperty("房间id")
+    private Long roomId;
+}

@@ -1,0 +1,16 @@
+spring:
+  # ?? swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 8082
+#日志控制
+logging:
+  level:
+    root: off
+
+
+app:
+  # docker 连接地址 执行代码用到 docker 容器
+  docker-url: tcp://localhost:2375
