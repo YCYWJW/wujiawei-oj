@@ -6,24 +6,73 @@
 
 ## 技术栈
 
-**后端**：SpringBoot 2.7、MyBatis-Plus、MySQL 8.0、Redis、RabbitMQ、ElasticSearch、Netty、JWT
+**后端**：SpringBoot 2.7.2、MyBatis-Plus、MySQL 8.0、Redis、RabbitMQ、ElasticSearch、Netty、JWT
 **前端**：Vue3、TypeScript、Element Plus
 **中间件**：Docker（代码沙箱隔离）、Cpolar（内网穿透）
 
 ## 核心功能
 
 - 题目中心：支持题目浏览、搜索、分类、在线提交、代码判题，判题沙箱基于 Docker 隔离，保证安全性。
-- 编程竞赛：支持周赛、在线 PK、实时排行榜，竞赛结果通过 ElasticSearch 检索。
-- 即时通讯：基于 Netty 的 WebSocket 实现好友私聊、群聊，支持离线消息、已读回执。
-- 技术论坛：帖子、评论、点赞、收藏，配合 RabbitMQ 实现异步消息通知。
+- 编程竞赛：支持周赛、在线 PK、实时排行榜。
+- 即时通讯：基于 Netty 的 WebSocket 实现好友私聊、群聊。
+- 技术论坛：帖子、评论、点赞、收藏。
 - 课程模块：视频教程、章节管理、进度追踪。
 - 用户中心：注册登录、资料管理、信用积分、竞赛记录。
 
 ## 项目亮点
 
 1. 代码沙箱：基于 Docker 实现多语言代码隔离执行，防止恶意代码影响宿主机。
-2. Redis 缓存优化：热点题目、排行榜、会话信息全部走 Redis 缓存，接口响应从 800ms 降至 120ms。
+2. Redis 缓存优化：排行榜、会话信息、用户信息、聊天房间/群成员、点赞记录走 Redis 缓存。
 3. 消息队列削峰：判题任务、消息推送走 RabbitMQ，避免高并发下服务雪崩。
+
+## 项目结构
+
+```
+wujiawei-oj/                          父工程（Maven 聚合 POM）
+├── pom.xml                           聚合 tx-oj 与 tx-code-sandbox 两个子模块
+├── tx-oj/                            主后端服务（SpringBoot 单体应用）
+│   ├── pom.xml
+│   ├── Dockerfile
+│   ├── mvnw / mvnw.cmd               Maven Wrapper
+│   ├── config-sample/                配置模板（application.yml / -prod / -test）
+│   ├── sql/
+│   │   ├── wujiawei_oj_ad.sql        建库建表脚本
+│   │   └── es_mapping                帖子索引的 ES mapping
+│   ├── doc/swagger.png
+│   ├── scripts/app.sh                部署脚本
+│   └── src/main/
+│       ├── java/com/wujiawei/oj/
+│       │   ├── MainApplication.java  启动类
+│       │   ├── controller/           REST 接口层
+│       │   │   ├── course/           课程模块接口
+│       │   │   └── forum/            论坛模块接口
+│       │   ├── judge/                判题核心
+│       │   │   ├── codesandbox/      远程代码沙箱客户端（工厂 / 代理）
+│       │   │   └── strategy/         分语言判题策略
+│       │   ├── chat/                 即时通讯模块
+│       │   │   ├── websocket/        Netty WebSocket 服务端
+│       │   │   ├── consumer/         RabbitMQ 消费者（消息落库 / WS 推送）
+│       │   │   ├── service/          房间、会话、消息推送业务
+│       │   │   └── domain/ DTO / VO
+│       │   ├── service/              业务层（impl / business / adapter / cache）
+│       │   ├── mapper/               MyBatis-Plus Mapper
+│       │   ├── model/                实体 / DTO / VO / 枚举
+│       │   ├── esdao/                帖子 ElasticSearch DAO
+│       │   ├── job/                  定时任务（cycle / match / once）
+│       │   ├── config/               全局配置（MQ / Redis / WebSocket 等）
+│       │   ├── aop/ annotation/      自定义注解与切面
+│       │   ├── event/ listener/      事件发布与监听
+│       │   ├── manager/ utils/       通用工具
+│       │   └── exception/            全局异常处理
+│       └── resources/
+│           ├── application.yml       主配置（本地文件，已被 .gitignore 忽略）
+│           ├── mapper/               MyBatis XML 映射
+│           └── META-INF/
+└── tx-code-sandbox/                  独立的代码沙箱服务
+    ├── pom.xml
+    ├── scripts/                      各语言运行脚本模板（c / java / js / python）
+    └── src/main/java/com/wujiawei/txcodesandbox/
+```
 
 ## 本地部署
 
@@ -37,7 +86,7 @@
 | Maven | 3.9+ | 打包 / 启动工具 |
 | MySQL | 8.0 | 用户 `root`，密码自定（与下文配置保持一致） |
 | Redis | — | 本地启动，无密码，使用 `database 2` |
-| RabbitMQ | 3.x | 用户 `admin` / 密码 `admin`，vhost `/`，需装延迟消息插件 |
+| RabbitMQ | 3.x | 用户 `admin` / 密码请自行设置密码，vhost `/`，需装延迟消息插件 |
 | Elasticsearch | 7.x | 无需手工建索引，框架首次写入自动创建 |
 
 各中间件默认端口：MySQL `3306`、Redis `6379`、RabbitMQ `5672`（管理台 `15672`）、Elasticsearch `9200`。
@@ -64,7 +113,7 @@ mysql -uroot -p --default-character-set=utf8mb4 < tx-oj/sql/wujiawei_oj_ad.sql
 
 **3.2 RabbitMQ（Docker 启动 + 装延迟插件 + 建 admin 用户）**
 
-项目依赖 RabbitMQ 的延迟消息插件 `rabbitmq_delayed_message_exchange`，并固定使用 `admin/admin` 账号和 `/` vhost，需一次准备到位：
+项目依赖 RabbitMQ 的延迟消息插件 `rabbitmq_delayed_message_exchange`，并固定使用 `admin` 账号和 `/` vhost（密码请自行设置），需一次准备到位：
 
 ```bash
 # 1. 用 Docker 启动（带管理台）
@@ -75,7 +124,7 @@ docker exec rabbitmq rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 docker restart rabbitmq
 
 # 3. 创建 admin 用户并授权 / vhost
-docker exec rabbitmq rabbitmqctl add_user admin admin
+docker exec rabbitmq rabbitmqctl add_user admin 你的密码
 docker exec rabbitmq rabbitmqctl set_user_tags admin administrator
 docker exec rabbitmq rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 ```
@@ -104,7 +153,7 @@ cp tx-oj/config-sample/application.yml tx-oj/src/main/resources/application.yml
 
 - `spring.datasource.url`：数据库名保持 `wujiawei_oj_ad`，用户名 / 密码填你 MySQL 的账号
 - `spring.redis`：`host` / `port` / `database: 2`；无密码时把 `password` 行注释或删掉
-- `spring.rabbitmq`：`username: admin`、`password: admin`、`virtual-host: /`（模板里写的是 `root/123456`，务必改成 `admin/admin`）
+- `spring.rabbitmq`：`username: admin`、`virtual-host: /`，`password` 填你在 3.2 里设置的密码
 - `spring.elasticsearch.uris`：`http://localhost:9200`
 
 **4.3 （可选）开启真实 AI 摘要**
@@ -150,4 +199,7 @@ mvn spring-boot:run
 
 ## 作者
 
-[@YCYWJW](https://github.com/YCYWJW)
+李嘉图（Ricardo）
+
+- GitHub: <https://github.com/YCYWJW>
+- Email: 3505498783@qq.com
