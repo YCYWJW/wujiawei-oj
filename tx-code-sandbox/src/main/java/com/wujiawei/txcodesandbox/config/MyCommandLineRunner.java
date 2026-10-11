@@ -32,10 +32,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        String javaImage = "openjdk:17";
+        String javaImage = "my_java_app:2.0";
 
         ListImagesCmd listImagesCmd = dockerClient.listImagesCmd();
-//        listImagesCmd.withLabelFilter("openjdk:17");
+//        listImagesCmd.withLabelFilter("my_java_app:2.0");
 //        listImagesCmd.withImageNameFilter(javaImage);
         List<Image> images = listImagesCmd.exec();
         if (images != null) {
@@ -58,11 +58,11 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 };
                 try {
                     pullImageCmd.exec(pullImageResultCallback).awaitCompletion();
-                } catch (InterruptedException e) {
-                    log.info("镜像拉取失败");
-                    throw new RuntimeException(e);
+                    log.info("镜像已拉取成功");
+                } catch (Exception e) {
+                    // 拉镜像失败只记录日志，不能让整个沙箱应用启动失败
+                    log.error("镜像 {} 拉取失败，沙箱仍会正常启动，但该语言的判题可能因此失败", javaImage, e);
                 }
-                log.info("镜像已拉取成功");
             } else {
                 log.info("镜像已存在 无需重复拉取");
             }

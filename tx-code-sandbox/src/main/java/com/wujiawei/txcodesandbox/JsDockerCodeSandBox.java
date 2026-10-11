@@ -183,7 +183,13 @@ public class JsDockerCodeSandBox extends CodeSandBoxTemplate {
             if (errorMessage[0] != "") {
                 int start = errorMessage[0].indexOf("\n");
                 int end = errorMessage[0].indexOf("\n    at ");
-                execMessage.setErrorMessage(errorMessage[0].substring(start, end));
+                // 两个下标都可能找不到（-1），start 还可能大于 end；任一不合法就保留原文，
+                // 否则 substring 会抛 StringIndexOutOfBoundsException，让沙箱返回 500、上游拿到 null
+                if (start >= 0 && end >= 0 && start <= end) {
+                    execMessage.setErrorMessage(errorMessage[0].substring(start, end));
+                } else {
+                    execMessage.setErrorMessage(errorMessage[0]);
+                }
             }
 //            execMessage.setExitCode();
             execMessageList.add(execMessage);

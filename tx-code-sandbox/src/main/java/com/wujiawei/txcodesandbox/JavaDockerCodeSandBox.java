@@ -250,7 +250,12 @@ public class JavaDockerCodeSandBox extends CodeSandBoxTemplate {
             execMessage.setMessage(message[0]);
             // 简化错误信息
             if (errorMessage[0] != "") {
-                errorMessage[0] = errorMessage[0].substring(0, errorMessage[0].indexOf("\tat "));
+                // 只有错误信息里确实含 Java 堆栈标记时才截取；找不到（indexOf 返回 -1）就保留原文。
+                // 原写法 substring(0, -1) 会抛 StringIndexOutOfBoundsException，让沙箱返回 500、上游拿到 null
+                int stackTraceIndex = errorMessage[0].indexOf("\tat ");
+                if (stackTraceIndex >= 0) {
+                    errorMessage[0] = errorMessage[0].substring(0, stackTraceIndex);
+                }
                 execMessage.setErrorMessage(errorMessage[0]);
             }
 //            execMessage.setExitCode();
@@ -288,7 +293,7 @@ public class JavaDockerCodeSandBox extends CodeSandBoxTemplate {
                 "        System.out.println();\n" +
                 "        System.out.println(TIME_FLAG_START + (endTimes - startTimes) + TIME_FLAG_END);\n" +
                 "    }\n" +
-                "}" + code;
+                "}\n" + code;
         return super.saveCode(code);
     }
 }
