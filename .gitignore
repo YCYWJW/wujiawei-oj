@@ -3,3 +3,5 @@
 /tempCode
 
 application-local.yml
+/startup.log
+/startup-err.log
