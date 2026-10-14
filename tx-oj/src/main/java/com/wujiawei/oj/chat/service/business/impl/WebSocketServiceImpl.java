@@ -135,7 +135,6 @@ public class WebSocketServiceImpl implements WebSocketService {
      */
     @Override
     public void authorize(Channel channel, WsAuthorize wsAuthorize) {
-        // TODO 校验是否已登录
 //        boolean isLogin = UserTokenUtils.isLogin(wsAuthorize.getUserId());
         boolean isLogin = loginService.verifyToken(wsAuthorize.getToken());
         if (isLogin) {

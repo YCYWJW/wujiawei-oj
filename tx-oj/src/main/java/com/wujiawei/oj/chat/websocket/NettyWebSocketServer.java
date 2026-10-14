@@ -77,7 +77,7 @@ public class NettyWebSocketServer {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         ChannelPipeline pipeline = socketChannel.pipeline();
-                        // 超过30秒客户端没有向服务器端发送心跳 则关闭连接 TODO 暂时关闭 方便测试
+                        // 超过30秒客户端没有向服务器端发送心跳 则关闭连接
                         pipeline.addLast(new IdleStateHandler(30, 0, 0));
                         // http协议编解码器
                         pipeline.addLast(new HttpServerCodec());

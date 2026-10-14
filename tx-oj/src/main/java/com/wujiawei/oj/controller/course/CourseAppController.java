@@ -92,10 +92,10 @@ public class CourseAppController {
         String AudioVideoType = "Original"; // 播放的音视频类型
         Integer RawAdaptiveDefinition = 10; // 允许输出的未加密的自适应码流模板 ID
         Integer ImageSpriteDefinition = 10; // 做进度条预览的雪碧图模板 ID
-        Integer CurrentTime = 1589448067;
+        Long CurrentTime = System.currentTimeMillis() / 1000;
 //        Long PsignExpire = CurrentTime + 1000 * 60 * 60 * 2; // 可任意设置过期时间
 //        String UrlTimeExpire = "5ebe9423‬"; // 可任意设置过期时间
-        String PlayKey = "CcqpJzaiTIuCoFBZtH4c";
+        String PlayKey = "placeholder";
         HashMap<String, Object> urlAccessInfo = new HashMap<String, Object>();
 //        urlAccessInfo.put("t", UrlTimeExpire);
         HashMap<String, Object> contentInfo = new HashMap<String, Object>();

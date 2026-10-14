@@ -20,9 +20,7 @@ import org.springframework.stereotype.Component;
  *
  * @author wujiawei
  * @date 2023/1/24 3:44:13
- * 注释：
  */
-// todo 取消注释开启任务
 @Component
 @Slf4j
 public class IncSyncPostToEs {

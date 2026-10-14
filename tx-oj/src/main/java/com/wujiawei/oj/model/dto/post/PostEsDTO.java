@@ -22,9 +22,7 @@ import java.util.List;
  *
  * @author wujiawei
  * @date 2023/1/24 3:44:13
- * 注释：
  **/
-// todo 取消注释开启 ES（须先配置 ES）
 @Document(indexName = "post")
 @Data
 public class PostEsDTO implements Serializable {

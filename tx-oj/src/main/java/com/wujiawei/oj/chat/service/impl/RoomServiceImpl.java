@@ -62,7 +62,6 @@ public class RoomServiceImpl extends ServiceImpl<RoomMapper, Room> implements Ro
         List<Long> sortedList = ChatAdapter.sortUserIdList(list);
         RoomFriend roomFriend = roomFriendService.getByUserIds(sortedList.get(0), sortedList.get(1));
         if (roomFriend != null) {
-            //  TODO 如果之前已经创建过 之前恢复之前的使用即可
             Room room = Room.builder()
                     .id(roomFriend.getRoomId())
                     .status(RoomStatusEnum.ACTIVE.getCode())

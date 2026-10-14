@@ -12,9 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  *
  * @author wujiawei
  * @date 2023/1/24 3:44:13
- * 注释：
  */
-// todo 如需开启 Redis，须移除 exclude 中的内容
 @SpringBootApplication()
 @MapperScan("com.wujiawei.oj.**.mapper")
 @EnableScheduling

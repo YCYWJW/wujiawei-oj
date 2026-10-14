@@ -30,7 +30,7 @@ public class WsPushMqListener {
     WebSocketService webSocketService;
 
     /**
-     * 该监听器负责处理队列里的判题请求
+     * WebSocket 消息推送监听器
      *
      * @param pushMsgMqDTO
      * @param channel
@@ -42,7 +42,6 @@ public class WsPushMqListener {
         try {
             WsBaseVO<?> wsBaseVO = pushMsgMqDTO.getWsBaseVO();
             log.info("[推送队列收到消息]： {}", wsBaseVO.getData());
-            // TODO 开始推送
             WsPushTypeEnum pushTypeEnum = WsPushTypeEnum.of(pushMsgMqDTO.getType());
             switch (pushTypeEnum) {
                 case USER:
