@@ -55,9 +55,8 @@ public class DeleteImgFromOss {
             Long timeStamp = Long.valueOf(v);
             long currentTimestamp = System.currentTimeMillis(); // 当前时间戳，单位为毫秒
             long timeDifference = currentTimestamp - timeStamp; // 计算时间差，单位为毫秒
-            long hoursInDay = 24L * 60L * 60L * 1000L; // 24小时对应的毫秒数
-            // 1000 * 60 * 5; // 5分钟 24L * 60L * 60L * 1000L
-            if (timeDifference > hoursInDay) {
+            long expireMillis = 24L * 60L * 60L * 1000L; // 24小时对应的毫秒数
+            if (timeDifference > expireMillis) {
                 // 超过了24小时
                 needDeleteImgUrls.add(k);
                 String prefix = "myqcloud.com/";
@@ -98,9 +97,8 @@ public class DeleteImgFromOss {
                         Long timeStamp = Long.valueOf(v);
                         long currentTimestamp = System.currentTimeMillis(); // 当前时间戳，单位为毫秒
                         long timeDifference = currentTimestamp - timeStamp; // 计算时间差，单位为毫秒
-                        long hoursInDay = 24L * 60L * 60L * 1000L; // 24小时对应的毫秒数
-                        // 1000 * 60 * 5; // 5分钟  24L * 60L * 60L * 1000L
-                        if (timeDifference > hoursInDay) {
+                        long expireMillis = 24L * 60L * 60L * 1000L; // 24小时对应的毫秒数
+                        if (timeDifference > expireMillis) {
                             // 超过了24小时
                             needDeleteImgUrls.add(k);
                             if (!collect.contains(k)) {
