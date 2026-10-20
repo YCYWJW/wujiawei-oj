@@ -14,3 +14,9 @@ application-local.yml
 stress/*.csv
 stress/*.log
 __pycache__/
+
+# 本地数据库导出文件（个人导出，可能含真实用户数据，禁止入库）
+# ⚠️ 注意：tx-oj/sql/wujiawei_oj_ad.sql 是正式建表/初始化脚本，已在版本控制中，必须保留。
+#    所以这里用具体文件名排除，不要图省事改成 tx-oj/sql/*.sql ——
+#    那样虽然不会影响已跟踪的文件，但以后新增的建表脚本会被静默忽略，是个隐蔽的坑。
+tx-oj/sql/ai0720_wjw.sql
